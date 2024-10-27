@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refurbished Car Price Predictor </title>
+    <style>
+        
+        body {
+            background-image: url("https://cdn.wallpapersafari.com/39/39/mCjYML.jpg"); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1{
+		 color: #ffcc00;
+         text-align: center;
+		 background-color: rgba(0, 0, 0, 0.6);
+		}
+		
+		h2 {
+            color: #ffcc00;
+            text-align: center;
+        }
+
+       
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 48%; 
+        }
+
+        label {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            color: #000;
+        }
+
+        input[type="submit"] {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff9900;
+        }
+
+        
+        .prediction-result {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Refurbished Car Price Predictor</h1>
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="feature1">Model:</label>
+                <input type="text" name="feature1" id="feature1">
+            </div>
+
+            <div class="form-group">
+                <label for="feature2">Year</label>
+                <input type="number" name="feature2" id="feature2">
+            </div>
+
+            <div class="form-group">
+                <label for="feature3">Transmission:</label>
+                <select name="feature3" id="feature3">
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Semi-Auto">Semi-Auto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="feature4">Distance Travelled:</label>
+                <input type="number" name="feature4" id="feature4">
+            </div>
+
+            <div class="form-group">
+                <label for="feature5">Fuel Type:</label>
+                <select name="feature5" id="feature5">
+                    <option value="Diesel">Diesel</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="feature6">Tax($):</label>
+                <input type="number" name="feature6" id="feature6">
+            </div>
+
+            <div class="form-group">
+                <label for="feature7">MPG :</label>
+                <input type="text" name="feature7" id="feature7">
+            </div>
+
+            <div class="form-group">
+                <label for="feature8">Engine Size:</label>
+                <input type="text" name="feature8" id="feature8">
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    {% if prediction is not none %}
+        <div class="prediction-result">
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction }} $ </p>
+        </div>
+    {% endif %}
+</body>
+</html>
